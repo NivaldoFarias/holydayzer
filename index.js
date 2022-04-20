@@ -42,12 +42,11 @@ app.get("/holidays/:month", (req, res) => {
 app.get("/is-today-holiday", (req, res) => {
   const today = new Date();
   const isHoliday = holidays.find(
-    (holiday) => holiday.date === today.toLocaleDateString()
+    (holiday) => holiday.date === today.toLocaleDateString("en-us")
   );
 
-  console.log(today.toLocaleDateString());
   res.send(
-    isHoliday ? "Sim, hoje é nome-do-feriado" : "Não, hoje não é feriado"
+    isHoliday ? `Sim, hoje é ${isHoliday.name}` : "Não, hoje não é feriado"
   );
 });
 
